@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Especial</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Georgia", serif;
+            background: linear-gradient(#0b3a2e, #052018);
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* NOCHEBUENAS */
+        .nochebuena {
+            position: absolute;
+            width: 180px;
+            top: 10px;
+            z-index: 10;
+        }
+
+        .nochebuena.left {
+            left: 10px;
+        }
+
+        .nochebuena.right {
+            right: 10px;
+        }
+
+        /* NIEVE */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            opacity: 0.8;
+            pointer-events: none;
+            animation-name: fall;
+            animation-timing-function: linear;
+            z-index: 9999;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(110vh); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 30px 20px;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-bottom: 40px;
+            color: #ffd700;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .paquete {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 0 15px black;
+        }
+
+        .paquete h2 {
+            margin: 15px 0;
+            font-size: 26px;
+            color: gold;
+        }
+
+        .paquete p {
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .precio {
+            font-size: 32px;
+            color: gold;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .listas {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .bloque {
+            background: rgba(0,0,0,0.4);
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .bloque h3 {
+            color: gold;
+        }
+
+        .contacto {
+            margin-top: 40px;
+            font-size: 18px;
+        }
+
+        .contacto span {
+            display: block;
+            margin-top: 8px;
+            color: gold;
+            font-size: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .menu-grid, .listas {
+                grid-template-columns: 1fr;
+            }
+
+            .nochebuena {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NOCHEBUENAS -->
+<img class="nochebuena left" src="Imagenes/red-poinsettia-flower-with-green-leaves-christmas-floral-illustration-free-png.png" alt="Nochebuena">
+<img class="nochebuena right" src="Imagenes/red-poinsettia-flower-with-green-leaves-christmas-floral-illustration-free-png.png" alt="Nochebuena">
+
+<div class="container">
+    <h1>Menú Especial</h1>
+
+    <div class="menu-grid">
+
+        <!-- ROLLO DE CARNE -->
+        <div class="paquete">
+            <h2>Rollo de Carne</h2>
+            <p><b>Para 10 personas</b></p>
+            <p>
+                Relleno de jamón, queso americano y espinaca<br>
+                Enuelto en tocino<br><br>
+                Guarnición a escoger – 2 litros<br>
+                + Postre de manzana – 1/2 litro
+            </p>
+            <div class="precio">$1200</div>
+        </div>
+
+        <!-- PECHUGA RELLENA -->
+        <div class="paquete">
+            <h2>Pechuga Rellena</h2>
+            <p><b>10 personas</b></p>
+            <p>
+                Jamón y queso americano<br>
+                2 litros de guarnición a escoger<br>
+                Salsa: pikim, chipotle o champiñones (opcional)
+            </p>
+            <div class="precio">$1300</div>
+        </div>
+
+    </div>
+
+    <!-- GUARNICIONES Y POSTRES -->
+    <div class="listas">
+
+        <div class="bloque">
+            <h3>Guarniciones (Precio por litro)</h3>
+            <p>Puré — $80</p>
+            <p>Spaghetti — $100</p>
+            <p>Gravy de champiñones — $90</p>
+            <p>Papitas al ajo / finas hierbas — $90</p>
+            <p>Salsa chipotle — $120</p>
+            <p>Salsa pibil — $150</p>
+        </div>
+
+        <div class="bloque">
+            <h3>Postres</h3>
+            <p>Ensalada de manzana — $160 por litro</p>
+        </div>
+
+    </div>
+
+    <!-- CONTACTO -->
+    <div class="contacto">
+        <p>Todo pedido incluye <b>10 cuernitos</b>.</p>
+        <p>
+            Se levanta pedido a partir de la fecha de publicación<br>
+            y/o hasta el <b>21 de diciembre</b> con anticipo del <b>50%</b>
+        </p>
+        <p>El otro 50% se paga al entregar.</p>
+
+        <span>📱 834 116 2015</span>
+        <span>📱 834 271 1652</span>
+    </div>
+
+</div>
+
+<!-- SCRIPT DE NIEVE -->
+<script>
+    function crearNieve() {
+        const snow = document.createElement("div");
+        snow.classList.add("snowflake");
+        snow.textContent = "❄";
+
+        const size = Math.random() * 1.5 + 0.5;
+        snow.style.fontSize = size + "em";
+
+        snow.style.left = Math.random() * 100 + "vw";
+
+        snow.style.animationDuration = Math.random() * 4 + 4 + "s";
+
+        document.body.appendChild(snow);
+
+        setTimeout(() => {
+            snow.remove();
+        }, 8000);
+    }
+
+    setInterval(crearNieve, 150);
+</script>
+
+</body>
+</html>
